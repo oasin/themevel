@@ -5,6 +5,7 @@ namespace Oasin\Themevel\Console;
 use Illuminate\Config\Repository;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem as File;
+use Illuminate\Support\Str;
 
 class ThemeGeneratorCommand extends Command
 {
@@ -125,10 +126,10 @@ class ThemeGeneratorCommand extends Command
         $this->theme['title'] = $this->ask('What is theme title?');
 
         $this->theme['description'] = $this->ask('What is theme description?', false);
-        $this->theme['description'] = !$this->theme['description'] ? '' : title_case($this->theme['description']);
+        $this->theme['description'] = !$this->theme['description'] ? '' : Str::title_case($this->theme['description']);
 
         $this->theme['author'] = $this->ask('What is theme author name?', false);
-        $this->theme['author'] = !$this->theme['author'] ? 'Oasin Tech' : title_case($this->theme['author']);
+        $this->theme['author'] = !$this->theme['author'] ? 'Oasin Tech' : Str::title_case($this->theme['author']);
 
         $this->theme['version'] = $this->ask('What is theme version?', false);
         $this->theme['version'] = !$this->theme['version'] ? '1.0.0' : $this->theme['version'];
